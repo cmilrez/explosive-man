@@ -1,0 +1,235 @@
+[gd_scene load_steps=15 format=3 uid="uid://dug2r750y2iw2"]
+
+[ext_resource type="Script" uid="uid://b3m6c71gka4cu" path="res://bombers/player.gd" id="1_k2jhm"]
+[ext_resource type="Texture2D" uid="uid://b11xvt8hocp2q" path="res://copyright_shit/bomber.png" id="1_vb64h"]
+[ext_resource type="AnimationLibrary" uid="uid://uoj58fhvf3ev" path="res://bombers/bomber_anim.res" id="2_f7qar"]
+[ext_resource type="Script" uid="uid://gcq2a0ln0e0u" path="res://misc/hurt_box.gd" id="2_vnxah"]
+[ext_resource type="Shape2D" uid="uid://bg22merrhfano" path="res://misc/collision_circle_r20.tres" id="4_om7si"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bxf662ou7eu8b" path="res://bombers/player_anim_state_machine.tres" id="5_2cl1w"]
+[ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="7_3qsjp"]
+
+[sub_resource type="Animation" id="Animation_mtubu"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2eewh"]
+resource_name = "cursed"
+length = 0.233337
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(0.501406, 0.501407, 0.501406, 1), Color(0.125911, 0.125911, 0.125911, 1), Color(0.501406, 0.501407, 0.501406, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3qsjp"]
+resource_name = "invulnerable"
+length = 0.233337
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.498039), Color(1, 1, 1, 0), Color(1, 1, 1, 0.498039)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2eewh"]
+_data = {
+&"RESET": SubResource("Animation_mtubu"),
+&"cursed": SubResource("Animation_2eewh"),
+&"invulnerable": SubResource("Animation_3qsjp")
+}
+
+[sub_resource type="Animation" id="Animation_om7si"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [165]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:read_input")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PunchArea/PunchCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BodyShape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PunchArea/PunchCollision:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-60, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cl1w"]
+_data = {
+&"RESET": SubResource("Animation_om7si")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f7qar"]
+radius = 31.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 2
+y_sort_enabled = true
+collision_mask = 14
+motion_mode = 1
+script = ExtResource("1_k2jhm")
+
+[node name="PunchArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
+script = ExtResource("2_vnxah")
+damage = 0
+punch = true
+
+[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea"]
+position = Vector2(-60, 0)
+shape = ExtResource("4_om7si")
+disabled = true
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("1_vb64h")
+hframes = 22
+vframes = 10
+frame = 165
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2eewh")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+&"": SubResource("AnimationLibrary_2cl1w"),
+&"Bomber": ExtResource("2_f7qar")
+}
+tree_root = ExtResource("5_2cl1w")
+parameters/conditions/idle = false
+parameters/conditions/walk = false
+parameters/hold_idle/blend_position = Vector2(0, 0)
+parameters/hold_walk/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/pickup/blend_position = Vector2(0, 0)
+parameters/punch/blend_position = Vector2(0, 0)
+parameters/throw/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="BodyShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_f7qar")
+
+[node name="BombSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 52
+input_pickable = false
+
+[node name="HitboxShape" parent="Hitbox" instance=ExtResource("7_3qsjp")]
+position = Vector2(0, -32)
+scale = Vector2(0.9, 0.9)
+
+[node name="BombBag" type="Node" parent="."]
+
+[node name="InvulnerableTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

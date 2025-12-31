@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2qu7ng7rkyhb"]
+
+[ext_resource type="Script" uid="uid://dm5j6w23k3mk0" path="res://misc/slide_action.gd" id="1_64ey8"]
+
+[node name="SlideAction" type="Node2D"]
+script = ExtResource("1_64ey8")
+
+[node name="Ray" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 15

@@ -1,0 +1,295 @@
+[gd_scene load_steps=37 format=4 uid="uid://bklkyd4y0vngh"]
+
+[ext_resource type="Script" uid="uid://ca7f6em6tyuqa" path="res://level/nav_grid.gd" id="1_22gpc"]
+[ext_resource type="PackedScene" uid="uid://dug2r750y2iw2" path="res://bombers/player.tscn" id="1_dsqel"]
+[ext_resource type="PackedScene" uid="uid://b62wjvg0drtey" path="res://interface/pause_menu.tscn" id="1_qj274"]
+[ext_resource type="Texture2D" uid="uid://chxo27it4s055" path="res://misc/grid.png" id="1_w72v2"]
+[ext_resource type="Texture2D" uid="uid://cm68806y1m46i" path="res://copyright_shit/lv1_background.png" id="2_jj66j"]
+[ext_resource type="Texture2D" uid="uid://b2hjevfbi3pab" path="res://misc/error.png" id="2_s65ib"]
+[ext_resource type="PackedScene" uid="uid://dlp58lhxmmtxt" path="res://level/breakable_block.tscn" id="4_owtjd"]
+[ext_resource type="PackedScene" uid="uid://b6v07nyb1tb73" path="res://items/fire_up.tscn" id="5_75yj7"]
+[ext_resource type="PackedScene" uid="uid://cikdhcrtighuf" path="res://level/wall.tscn" id="5_kopq5"]
+[ext_resource type="PackedScene" uid="uid://dk3r70fd67c6d" path="res://bombers/ai_bomber.tscn" id="7_v7kku"]
+[ext_resource type="PackedScene" uid="uid://dnseep5fpgoms" path="res://items/power_bomb_seeker.tscn" id="8_6yu8p"]
+[ext_resource type="PackedScene" uid="uid://bvtkxexa6rg" path="res://items/power_kick.tscn" id="9_hufjl"]
+[ext_resource type="PackedScene" uid="uid://cowb8najc86no" path="res://items/speed_up.tscn" id="9_sy2wk"]
+[ext_resource type="PackedScene" uid="uid://dixqrtcwek6eq" path="res://items/power_punch.tscn" id="10_2h0m4"]
+[ext_resource type="PackedScene" uid="uid://blbbnyoef7t51" path="res://items/power_bomb_spiked.tscn" id="11_6yu8p"]
+[ext_resource type="PackedScene" uid="uid://x7atajepir72" path="res://items/bomb_up.tscn" id="11_40l65"]
+[ext_resource type="PackedScene" uid="uid://dhrryg1cdlsnk" path="res://items/power_glove.tscn" id="11_qj274"]
+[ext_resource type="PackedScene" uid="uid://jojmn4pxtqwd" path="res://items/power_bomb_remote.tscn" id="12_xflnm"]
+[ext_resource type="PackedScene" uid="uid://fbvk8ff83xrd" path="res://items/power_bomb_mine.tscn" id="13_as6sw"]
+[ext_resource type="PackedScene" uid="uid://drlhojksvqitp" path="res://items/speed_down.tscn" id="14_eu7r1"]
+[ext_resource type="PackedScene" uid="uid://re6vhgpmd6bj" path="res://items/fire_down.tscn" id="15_cko6f"]
+[ext_resource type="PackedScene" uid="uid://b2qeffhn5cuqe" path="res://items/fire_max.tscn" id="16_jj66j"]
+[ext_resource type="PackedScene" uid="uid://cpvo4d6y8c7lt" path="res://items/bomb_max.tscn" id="17_8n6n5"]
+[ext_resource type="PackedScene" uid="uid://dyc8bjn3aqn1q" path="res://items/bomb_down.tscn" id="18_hj18v"]
+[ext_resource type="PackedScene" uid="uid://bcpp6ussrpb5u" path="res://bombs/bomb_mine.tscn" id="18_r7ek7"]
+[ext_resource type="PackedScene" uid="uid://deeakeiyux2rf" path="res://items/hp_up.tscn" id="19_jxs5t"]
+[ext_resource type="PackedScene" uid="uid://dk0v5crgt80le" path="res://items/live_up.tscn" id="20_tsucf"]
+[ext_resource type="PackedScene" uid="uid://dyx7kxdcx4a44" path="res://items/invincible.tscn" id="22_hj18v"]
+[ext_resource type="PackedScene" uid="uid://cgodo4lejh6v7" path="res://items/speed_max.tscn" id="23_jxs5t"]
+[ext_resource type="PackedScene" uid="uid://cb4scndbk8rm8" path="res://items/pass_wall.tscn" id="24_qihx7"]
+[ext_resource type="PackedScene" uid="uid://bb0378ber4axj" path="res://items/pass_bomb.tscn" id="25_ubm6t"]
+[ext_resource type="PackedScene" uid="uid://bbibvtoe6acgb" path="res://items/cursed_skull.tscn" id="28_8n6n5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kopq5"]
+radius = 32.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_amuej"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_22gpc"]
+resource_name = "lv1_blocks"
+scenes/1/scene = ExtResource("4_owtjd")
+scenes/2/scene = ExtResource("5_kopq5")
+
+[sub_resource type="TileSet" id="TileSet_22gpc"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_22gpc")
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_qj274")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 448)
+
+[node name="Grid2" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(512, 448)
+scale = Vector2(4, 4)
+texture = ExtResource("2_jj66j")
+region_enabled = true
+region_rect = Rect2(-112, -64, 256, 224)
+
+[node name="Grid" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(256, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("1_w72v2")
+region_enabled = true
+region_rect = Rect2(-32, -32, 128, 128)
+
+[node name="Err" type="StaticBody2D" parent="."]
+position = Vector2(416, 544)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Error" type="Sprite2D" parent="Err"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_s65ib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Err"]
+shape = SubResource("CircleShape2D_kopq5")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+position = Vector2(512, 0)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_amuej")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(512, 896)
+shape = SubResource("WorldBoundaryShape2D_amuej")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 384)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_amuej")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1024, 384)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_amuej")
+
+[node name="Items" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="SpeedUp" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(736, 160)
+
+[node name="SpeedUp2" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(544, 160)
+
+[node name="SpeedUp3" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(864, 288)
+
+[node name="SpeedUp4" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(224, 672)
+
+[node name="SpeedUp5" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(416, 672)
+
+[node name="SpeedUp6" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(288, 96)
+
+[node name="SpeedUp7" parent="Items" instance=ExtResource("9_sy2wk")]
+position = Vector2(160, 288)
+
+[node name="FireUp" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(608, 672)
+
+[node name="FireUp3" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(736, 736)
+
+[node name="FireUp2" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(864, 608)
+
+[node name="FireUp4" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(480, 480)
+
+[node name="FireUp5" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(288, 288)
+
+[node name="FireUp6" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(608, 96)
+
+[node name="FireUp7" parent="Items" instance=ExtResource("5_75yj7")]
+position = Vector2(96, 672)
+
+[node name="BombUp" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(416, 288)
+
+[node name="BombUp2" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(416, 160)
+
+[node name="BombUp3" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(32, 480)
+
+[node name="BombUp4" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(800, 32)
+
+[node name="BombUp5" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(672, 544)
+
+[node name="BombUp6" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(288, 736)
+
+[node name="BombUp7" parent="Items" instance=ExtResource("11_40l65")]
+position = Vector2(160, 480)
+
+[node name="SpikedItem" parent="Items" instance=ExtResource("11_6yu8p")]
+position = Vector2(224, 544)
+
+[node name="SeekerItem" parent="Items" instance=ExtResource("8_6yu8p")]
+position = Vector2(544, 288)
+
+[node name="KickPower" parent="Items" instance=ExtResource("9_hufjl")]
+position = Vector2(864, 224)
+
+[node name="PuchPower" parent="Items" instance=ExtResource("10_2h0m4")]
+position = Vector2(544, 352)
+
+[node name="HoldPower" parent="Items" instance=ExtResource("11_qj274")]
+position = Vector2(928, 416)
+
+[node name="RemoteBombItem" parent="Items" instance=ExtResource("12_xflnm")]
+position = Vector2(288, 160)
+
+[node name="MineBombItem" parent="Items" instance=ExtResource("13_as6sw")]
+position = Vector2(800, 480)
+
+[node name="SpeedDown" parent="Items" instance=ExtResource("14_eu7r1")]
+position = Vector2(928, 864)
+
+[node name="SpeedDown2" parent="Items" instance=ExtResource("14_eu7r1")]
+position = Vector2(96, 864)
+
+[node name="SpeedDown3" parent="Items" instance=ExtResource("14_eu7r1")]
+position = Vector2(992, 800)
+
+[node name="FireDown" parent="Items" instance=ExtResource("15_cko6f")]
+position = Vector2(32, 800)
+
+[node name="FireDown2" parent="Items" instance=ExtResource("15_cko6f")]
+position = Vector2(992, 96)
+
+[node name="FireMax" parent="Items" instance=ExtResource("16_jj66j")]
+position = Vector2(96, 32)
+
+[node name="BombMax" parent="Items" instance=ExtResource("17_8n6n5")]
+position = Vector2(928, 32)
+
+[node name="BombDown" parent="Items" instance=ExtResource("18_hj18v")]
+position = Vector2(992, 224)
+
+[node name="BombDown2" parent="Items" instance=ExtResource("18_hj18v")]
+position = Vector2(32, 160)
+
+[node name="BombDown3" parent="Items" instance=ExtResource("18_hj18v")]
+position = Vector2(992, 608)
+
+[node name="HPUp" parent="Items" instance=ExtResource("19_jxs5t")]
+position = Vector2(608, 864)
+
+[node name="HPUp2" parent="Items" instance=ExtResource("19_jxs5t")]
+position = Vector2(672, 864)
+
+[node name="LiveUp" parent="Items" instance=ExtResource("20_tsucf")]
+position = Vector2(224, 864)
+
+[node name="Invincible" parent="Items" instance=ExtResource("22_hj18v")]
+position = Vector2(352, 608)
+
+[node name="SpeedMax" parent="Items" instance=ExtResource("23_jxs5t")]
+position = Vector2(416, 32)
+
+[node name="PassWall" parent="Items" instance=ExtResource("24_qihx7")]
+position = Vector2(800, 352)
+
+[node name="PassBomb" parent="Items" instance=ExtResource("25_ubm6t")]
+position = Vector2(480, 800)
+
+[node name="HoldPower2" parent="Items" instance=ExtResource("11_qj274")]
+position = Vector2(608, 480)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAJAAkAAAAAAAAAAQAKAAkAAAAAAAAAAQALAAkAAAAAAAAAAQAMAAkAAAAAAAAAAQAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQALAAgAAAAAAAAAAQAKAAoAAAAAAAAAAQAKAAsAAAAAAAAAAQALAAoAAAAAAAAAAQAMAAoAAAAAAAAAAQANAAoAAAAAAAAAAQAOAAoAAAAAAAAAAQAPAAoAAAAAAAAAAQANAAsAAAAAAAAAAQAOAAkAAAAAAAAAAQAOAAgAAAAAAAAAAQAOAAcAAAAAAAAAAQANAAgAAAAAAAAAAQAKAAEAAAAAAAAAAQAMAAEAAAAAAAAAAQAMAAMAAAAAAAAAAQAKAAMAAAAAAAAAAQAAAA0AAAAAAAAAAgAAAAAAAAAAAAAAAgAPAA0AAAAAAAAAAgAPAAAAAAAAAAAAAgACAAoAAAAAAAAAAgAEAAoAAAAAAAAAAgA=")
+tile_set = SubResource("TileSet_22gpc")
+
+[node name="GridMap2D" type="Node" parent="." node_paths=PackedStringArray("tile_layer")]
+script = ExtResource("1_22gpc")
+tile_layer = NodePath("../TileMapLayer")
+metadata/_custom_type_script = "uid://ca7f6em6tyuqa"
+
+[node name="Marker2D" type="Marker2D" parent="GridMap2D"]
+position = Vector2(96, 96)
+
+[node name="Marker2D2" type="Marker2D" parent="GridMap2D"]
+position = Vector2(96, 608)
+
+[node name="Marker2D3" type="Marker2D" parent="GridMap2D"]
+position = Vector2(352, 608)
+
+[node name="Marker2D4" type="Marker2D" parent="GridMap2D"]
+position = Vector2(352, 96)
+
+[node name="Marker2D5" type="Marker2D" parent="GridMap2D"]
+position = Vector2(480, 96)
+
+[node name="Marker2D6" type="Marker2D" parent="GridMap2D"]
+position = Vector2(480, 416)
+
+[node name="Marker2D7" type="Marker2D" parent="GridMap2D"]
+position = Vector2(224, 416)
+
+[node name="Marker2D8" type="Marker2D" parent="GridMap2D"]
+position = Vector2(224, 96)
+
+[node name="Player" parent="." node_paths=PackedStringArray("tile_layer") instance=ExtResource("1_dsqel")]
+position = Vector2(672, 384)
+tile_layer = NodePath("../TileMapLayer")
+
+[node name="AIBomber" parent="." node_paths=PackedStringArray("pos_targets") instance=ExtResource("7_v7kku")]
+position = Vector2(96, 384)
+pos_targets = [NodePath("../GridMap2D/Marker2D"), NodePath("../GridMap2D/Marker2D2"), NodePath("../GridMap2D/Marker2D3"), NodePath("../GridMap2D/Marker2D4"), NodePath("../GridMap2D/Marker2D5"), NodePath("../GridMap2D/Marker2D6"), NodePath("../GridMap2D/Marker2D7"), NodePath("../GridMap2D/Marker2D8")]
+
+[node name="BombMine" parent="." instance=ExtResource("18_r7ek7")]
+position = Vector2(736, 416)
+fire_power = 2
+
+[node name="CursedSkull" parent="." instance=ExtResource("28_8n6n5")]
+position = Vector2(352, 864)

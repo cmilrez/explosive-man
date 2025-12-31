@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnseep5fpgoms"]
+
+[ext_resource type="Script" uid="uid://cqv00uqcxv6fh" path="res://items/bomb_item.gd" id="1_kteli"]
+[ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="2_ak8go"]
+[ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="3_8fye7"]
+[ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_h2tw1"]
+
+[node name="SeekerBombItem" type="Area2D"]
+collision_layer = 16
+collision_mask = 44
+input_pickable = false
+script = ExtResource("1_kteli")
+scene_path = "uid://olo5lp8gwoph"
+
+[node name="Border" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_ak8go")
+autoplay = "default"
+
+[node name="Icon" type="Sprite2D" parent="Border"]
+texture = ExtResource("3_8fye7")
+hframes = 5
+vframes = 6
+frame = 1
+
+[node name="AreaCollision" parent="." instance=ExtResource("4_h2tw1")]

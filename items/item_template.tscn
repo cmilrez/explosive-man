@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://yphfk3eonvxn"]
+
+[ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="1_owjb8"]
+[ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="2_rrw46"]
+[ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="3_rrw46"]
+
+[node name="Item" type="Area2D"]
+collision_layer = 16
+collision_mask = 44
+input_pickable = false
+
+[node name="Border" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("1_owjb8")
+autoplay = "default"
+
+[node name="Icon" type="Sprite2D" parent="Border"]
+texture = ExtResource("2_rrw46")
+hframes = 5
+vframes = 6
+frame = 25
+
+[node name="AreaCollision" parent="." instance=ExtResource("3_rrw46")]

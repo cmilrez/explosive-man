@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cikdhcrtighuf"]
+
+[ext_resource type="Texture2D" uid="uid://debf177jhhv81" path="res://copyright_shit/lv1_wall_1.png" id="1_kyd43"]
+[ext_resource type="Shape2D" uid="uid://dhiccjqkcl0av" path="res://misc/collision_rectangle_64x64.tres" id="2_sklim"]
+
+[node name="Wall" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_kyd43")
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+shape = ExtResource("2_sklim")

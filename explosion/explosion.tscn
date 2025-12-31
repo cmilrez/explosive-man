@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://vqavdudydoe5"]
+
+[ext_resource type="Script" uid="uid://bnyma8k5eu553" path="res://explosion/explosion.gd" id="1_q1xk1"]
+[ext_resource type="SpriteFrames" uid="uid://c6vgiayt8bahk" path="res://explosion/explosion_sprites/core.tres" id="2_ej53b"]
+[ext_resource type="Shape2D" uid="uid://dhiccjqkcl0av" path="res://misc/collision_rectangle_64x64.tres" id="3_tcrle"]
+[ext_resource type="Script" uid="uid://gcq2a0ln0e0u" path="res://misc/hurt_box.gd" id="3_tic5l"]
+
+[node name="Explosion" type="Node2D"]
+z_index = 1
+script = ExtResource("1_q1xk1")
+
+[node name="Segments" type="Node2D" parent="."]
+
+[node name="ExplosionArea" type="Area2D" parent="Segments"]
+collision_layer = 32
+collision_mask = 0
+input_pickable = false
+monitoring = false
+script = ExtResource("3_tic5l")
+
+[node name="Core" type="AnimatedSprite2D" parent="Segments/ExplosionArea"]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_ej53b")
+autoplay = "default"
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Segments/ExplosionArea"]
+scale = Vector2(0.9, 0.9)
+shape = ExtResource("3_tcrle")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Ray" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 64)
+collision_mask = 62
+collide_with_areas = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

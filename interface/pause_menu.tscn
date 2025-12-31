@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b62wjvg0drtey"]
+
+[ext_resource type="Script" uid="uid://x3rrggjwru6f" path="res://interface/pause_menu.gd" id="1_ohxgy"]
+[ext_resource type="Texture2D" uid="uid://covo6g48hqiif" path="res://copyright_shit/pause.png" id="2_jsbep"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ohxgy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 432.0
+offset_right = 443.0
+offset_bottom = 448.0
+scale = Vector2(4, 4)
+texture = ExtResource("2_jsbep")

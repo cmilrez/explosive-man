@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyc8bjn3aqn1q"]
+
+[ext_resource type="Script" uid="uid://dvkxei4jrcxy" path="res://items/stat_item.gd" id="1_2y1do"]
+[ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="2_rmj1j"]
+[ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="3_cc744"]
+[ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_gvm40"]
+
+[node name="BombDown" type="Area2D"]
+collision_layer = 16
+collision_mask = 44
+input_pickable = false
+script = ExtResource("1_2y1do")
+stat = "bomb_limit"
+value_change = -1
+
+[node name="Border" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("2_rmj1j")
+autoplay = "default"
+
+[node name="Icon" type="Sprite2D" parent="Border"]
+texture = ExtResource("3_cc744")
+hframes = 5
+vframes = 6
+frame = 18
+
+[node name="AreaCollision" parent="." instance=ExtResource("4_gvm40")]

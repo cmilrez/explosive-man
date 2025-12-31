@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0jsnvq48wi05"]
+
+[ext_resource type="SpriteFrames" uid="uid://5v7jb0sdgku3" path="res://explosion/explosion_sprites/tip_right.tres" id="1_2gtld"]
+[ext_resource type="Script" uid="uid://gcq2a0ln0e0u" path="res://misc/hurt_box.gd" id="1_5djan"]
+[ext_resource type="Shape2D" uid="uid://b0iswfjorevuf" path="res://misc/collision_rectangle_48x48.tres" id="3_xtlxa"]
+
+[node name="ExplosionArea" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+input_pickable = false
+monitoring = false
+script = ExtResource("1_5djan")
+
+[node name="TipRight" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("1_2gtld")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -2.17199e-05)
+rotation = 1.5708
+shape = ExtResource("3_xtlxa")
+debug_color = Color(1, 0, 0, 0.419608)

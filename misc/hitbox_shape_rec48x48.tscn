@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4fq2pmw5wugd"]
+
+[ext_resource type="Shape2D" uid="uid://b0iswfjorevuf" path="res://misc/collision_rectangle_48x48.tres" id="1_3jrn7"]
+
+[node name="HitCollision" type="CollisionShape2D"]
+shape = ExtResource("1_3jrn7")
+debug_color = Color(1, 1, 0, 0.419608)

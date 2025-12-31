@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcpp6ussrpb5u"]
+
+[ext_resource type="Script" uid="uid://dywngv5d1tkke" path="res://bombs/bomb_mine.gd" id="1_ce67r"]
+[ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="1_m6ewu"]
+[ext_resource type="Shape2D" uid="uid://761b4cph2smy" path="res://misc/collision_circle_r32.tres" id="1_y4efg"]
+[ext_resource type="Animation" uid="uid://dv2as57pru2vs" path="res://bombs/bomb_mine_anim.res" id="4_7w4fx"]
+[ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="5_7w4fx"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mnjt3"]
+_data = {
+&"bomb_mine_anim": ExtResource("4_7w4fx")
+}
+
+[node name="BombMine" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_ce67r")
+one_only = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_m6ewu")
+hframes = 4
+vframes = 4
+frame = 3
+
+[node name="BodyCollision" type="CollisionShape2D" parent="."]
+shape = ExtResource("1_y4efg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mnjt3")
+}
+autoplay = "bomb_mine_anim"
+
+[node name="FuseTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 32
+input_pickable = false
+
+[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_7w4fx")]
+disabled = true

@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk3r70fd67c6d"]
+
+[ext_resource type="Script" uid="uid://dyl561wp4q4i5" path="res://bombers/ai_bomber.gd" id="1_u1naf"]
+[ext_resource type="Shape2D" uid="uid://bg22merrhfano" path="res://misc/collision_circle_r20.tres" id="2_rax2v"]
+[ext_resource type="AnimationLibrary" uid="uid://uoj58fhvf3ev" path="res://bombers/bomber_anim.res" id="3_nu2bf"]
+[ext_resource type="Texture2D" uid="uid://cvmu3lj4tqdgv" path="res://copyright_shit/vampire.png" id="3_rax2v"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://bxf662ou7eu8b" path="res://bombers/player_anim_state_machine.tres" id="4_kuj56"]
+[ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="6_1wnke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rax2v"]
+radius = 31.0
+
+[node name="AIBomber" type="CharacterBody2D"]
+z_index = 2
+y_sort_enabled = true
+collision_mask = 14
+motion_mode = 1
+script = ExtResource("1_u1naf")
+
+[node name="PunchArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 0
+collision_mask = 0
+input_pickable = false
+monitorable = false
+
+[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea"]
+position = Vector2(-60, 0)
+shape = ExtResource("2_rax2v")
+disabled = true
+debug_color = Color(1, 1, 0, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("3_rax2v")
+hframes = 22
+vframes = 10
+frame = 162
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+libraries = {
+&"Bomber": ExtResource("3_nu2bf")
+}
+tree_root = ExtResource("4_kuj56")
+parameters/conditions/idle = false
+parameters/conditions/walk = false
+parameters/hold_idle/blend_position = Vector2(0, 0)
+parameters/hold_walk/blend_position = Vector2(0, 0)
+parameters/idle/blend_position = Vector2(0, 0)
+parameters/pickup/blend_position = Vector2(0, 0)
+parameters/punch/blend_position = Vector2(0, 0)
+parameters/throw/blend_position = Vector2(0, 0)
+parameters/walk/blend_position = Vector2(0, 0)
+
+[node name="BodyShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CircleShape2D_rax2v")
+
+[node name="BombSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 52
+input_pickable = false
+
+[node name="HitboxShape" parent="Hitbox" instance=ExtResource("6_1wnke")]
+position = Vector2(0, -32)
+scale = Vector2(0.9, 0.9)
+
+[node name="BombBag" type="Node" parent="."]
+
+[node name="InvulnerableTimer" type="Timer" parent="."]
+one_shot = true
