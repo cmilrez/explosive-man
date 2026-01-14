@@ -190,12 +190,14 @@ libraries = {
 tree_root = ExtResource("5_2cl1w")
 advance_expression_base_node = NodePath("..")
 parameters/hold_idle/blend_position = Vector2(0, 0)
-parameters/hold_walk/blend_position = Vector2(0, 0)
+parameters/hold_walk/blend/blend_position = Vector2(0, 0)
+parameters/hold_walk/time/scale = 1.0
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/pickup/blend_position = Vector2(0, 0)
 parameters/punch/blend_position = Vector2(0, 0)
 parameters/throw/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
+parameters/walk/blend/blend_position = Vector2(0, 0)
+parameters/walk/speed/scale = 1.0
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -32)

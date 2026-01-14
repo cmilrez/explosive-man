@@ -37,9 +37,8 @@ func begin_slide(direction: Vector2):
 func begin_jump(direction: Vector2, length := 3.0):
 	var tween: Tween = $Move.jump(self, direction, length)
 	moving = true
-	fuse_timer.paused = moving
-	$BodyCollision.set_deferred('disabled', moving)
-	$Hitbox/HitCollision.set_deferred('disabled', moving)
+	z_index = 2
+	freeze(moving)
 	tween.finished.connect(func():
 		var query_param = PhysicsPointQueryParameters2D.new()
 		query_param.collision_mask = collision_mask
@@ -48,16 +47,15 @@ func begin_jump(direction: Vector2, length := 3.0):
 		if intersection:
 			if intersection[0].collider is Explosion:
 				moving = false
+				z_index = 0
 				fuse_timer.paused = moving
 				fuse_timer.start(0.1)
 				return
 			begin_jump(direction, 1.0)
 			return
 		moving = false
-		fuse_timer.paused = moving
-		$BodyCollision.set_deferred('disabled', moving)
-		$Hitbox/HitCollision.set_deferred('disabled', moving)
-	)
+		z_index = 0
+		freeze(moving))
 
 func make_explosion():
 	var new_explosion = explosion_scene.instantiate()
@@ -71,6 +69,11 @@ func detonate():
 	var new_explosion = make_explosion()
 	get_tree().current_scene.add_child(new_explosion)
 	queue_free()
+
+func freeze(value: bool):
+	fuse_timer.paused = value
+	$BodyCollision.set_deferred('disabled', value)
+	$Hitbox/HitCollision.set_deferred('disabled', value)
 
 func _on_fuse_timer_timeout():
 	detonate()

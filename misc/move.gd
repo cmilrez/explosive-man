@@ -34,6 +34,6 @@ func jump(node: Node2D, direction: Vector2, length: float) -> Tween:
 		tween.tween_property(node, 'global_position:y', node.global_position.y, duration/2.0).set_ease(Tween.EASE_OUT).set_delay(duration/2.0)
 	else:
 		var height = direction.y * length * Global.CELL_SIZE + node.global_position.y
-		tween.tween_property(node, 'global_position:y', height+(24.0*direction.y), duration*2.0/3.0).set_ease(Tween.EASE_OUT)
+		tween.tween_property(node, 'global_position:y', height+(16.0*direction.y), duration*2.0/3.0).set_ease(Tween.EASE_OUT)
 		tween.tween_property(node, 'global_position:y', height, duration/3.0).set_ease(Tween.EASE_OUT)
 	return tween

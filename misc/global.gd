@@ -20,7 +20,7 @@ func snap_card(vector: Vector2) -> Vector2:
 		vector = Vector2(0.0, signf(vector.y))
 	return vector
 
-## Snaps vector to a grid of CELL_SIZE.
+## Snaps vector to a grid of Global.CELL_SIZE.
 func snap_grid(vector: Vector2) -> Vector2:
 	var half_cell = Vector2.ONE * CELL_SIZE / 2.0
 	vector -= half_cell

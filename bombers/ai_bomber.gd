@@ -24,4 +24,4 @@ func _physics_process(_delta):
 			get_tree().create_timer(duration, false).timeout.connect(func(): moving = false)
 	velocity = direction * speed
 	move_and_slide()
-	anim_tree['parameters/walk/blend_position'] = direction
+	anim_tree['parameters/walk/blend/blend_position'] = direction

@@ -7,7 +7,6 @@ class_name Player extends Bomber
 @onready var hitbox := $Hitbox
 @onready var bomb_spawn := $BombSpawn
 
-@export var tile_layer: TileMapLayer = null
 @export var read_input := true
 
 var anim_state_machine: AnimationNodeStateMachinePlayback
@@ -20,14 +19,7 @@ func _ready():
 func _process(_delta):
 	if not alive:
 		return
-	if hp <= 0:
-		if lives > 0: # actually should reload scene
-			lives -= 1
-			hp = 1
-		else:
-			anim_state_machine.travel('death')
-			death()
-			return
+
 
 func _physics_process(_delta):
 	if read_input:
@@ -43,7 +35,7 @@ func _physics_process(_delta):
 			move_direction.x = 1
 		else:
 			move_direction.x = 0
-		if Input.is_action_pressed('make_bomb'):# and not bomb_holding:
+		if Input.is_action_pressed('make_bomb') and not bomb_holding:
 			make_bomb()
 	else:
 		move_direction = Vector2.ZERO
@@ -56,9 +48,15 @@ func _physics_process(_delta):
 	if cursed_skull:
 		cursed_skull.new_curse.apply_curse()
 	set_animation_param()
-	
-	if not move_and_slide():
+	var collided = move_and_slide()
+	if bomb_holding:
+		bomb_holding.global_position = global_position + Vector2(0.0, -112.0)
+	if not collided:
+		anim_tree['parameters/walk/speed/scale'] = 1.0
+		anim_tree['parameters/hold_walk/time/scale'] = 1.0
 		return
+	anim_tree['parameters/walk/speed/scale'] = 0.5
+	anim_tree['parameters/hold_walk/time/scale'] = 0.5
 	if not velocity:
 		return
 	if not kick:
@@ -74,53 +72,83 @@ func _physics_process(_delta):
 func _unhandled_key_input(event):
 	if not alive:
 		return
-	#if event.is_action_released('make_bomb') and bomb_holding:
-		#anim_tree['parameters/throw/blend_position'] = facing_direction
-		#anim_state_machine.travel('throw')
-		#bomb_holding.jump(facing_direction)
-		#bomb_holding.held = false
-		#bomb_holding = null
+	if event.is_action_pressed('make_bomb') and hold:
+		for body in hitbox.get_overlapping_bodies():
+			if body is Bomb:
+				bomb_holding = body
+				bomb_holding.z_index = 2
+				bomb_holding.freeze(true)
+				anim_tree['parameters/pickup/blend_position'] = facing_direction
+				anim_state_machine.travel('pickup')
+				return
+		return
+	if event.is_action_released('make_bomb') and bomb_holding:
+		anim_tree['parameters/throw/blend_position'] = facing_direction
+		anim_state_machine.travel('throw')
+		return
 	if event.is_action_pressed('punch_action') and punch:
 		anim_tree['parameters/punch/blend_position'] = facing_direction
 		anim_state_machine.travel('punch')
+		return
 	if event.is_action_pressed('bomb_action'):
 		if not bomb_bag.get_child_count():
 			return
 		var first_bomb = bomb_bag.get_child(0)
 		if first_bomb is BombRemote:
 			first_bomb.detonate()
+		return
 
 func set_animation_param():
 	if bomb_holding:
 		anim_tree['parameters/hold_idle/blend_position'] = facing_direction
-		anim_tree['parameters/hold_walk/blend_position'] = facing_direction
+		anim_tree['parameters/hold_walk/blend/blend_position'] = facing_direction
 	else:
 		anim_tree['parameters/idle/blend_position'] = facing_direction
-		anim_tree['parameters/walk/blend_position'] = facing_direction
+		anim_tree['parameters/walk/blend/blend_position'] = facing_direction
 
 func make_bomb():
 	if hitbox.has_overlapping_bodies():
 		return
-	if bombs_active < bomb_limit:
-		var new_bomb: Node2D = null
-		if is_instance_valid(bomb_special):
-			new_bomb = Global.BOMB_NORMAL.instantiate()
-		else:
-			new_bomb = bomb_scene.instantiate()
-		if new_bomb is Bomb:
-			if new_bomb.one_only:
-				bomb_special = new_bomb
-			new_bomb.bomber_owner = self
-			new_bomb.fuse = bomb_fuse
-			new_bomb.fire_power = fire_power
-			add_collision_exception_with(new_bomb)
-		new_bomb.global_position = Global.snap_grid(bomb_spawn.global_position)
-		bomb_bag.add_child(new_bomb)
+	if bombs_active >= bomb_limit:
+		return
+	var new_bomb: Node2D = null
+	if is_instance_valid(bomb_special):
+		new_bomb = Global.BOMB_NORMAL.instantiate()
+	else:
+		new_bomb = bomb_scene.instantiate()
+	if new_bomb is Bomb:
+		if new_bomb.one_only:
+			bomb_special = new_bomb
+		new_bomb.bomber_owner = self
+		new_bomb.fuse = bomb_fuse
+		new_bomb.fire_power = fire_power
+		add_collision_exception_with(new_bomb)
+	new_bomb.global_position = Global.snap_grid(bomb_spawn.global_position)
+	bomb_bag.add_child(new_bomb)
+
+func throw_bomb():
+	if not bomb_holding:
+		return
+	bomb_holding.global_position = Global.snap_grid(bomb_spawn.global_position)
+	bomb_holding.begin_jump(facing_direction)
+	bomb_holding = null
 
 func set_hp(value: int):
-	if hp == 0 and value > 0:
+	if not hp and value > 0:
 		revive()
 	hp = maxi(value, 0)
+	if hp:
+		if lives > 0: #TODO reload scene or spaceship
+			lives -= 1
+			hp = 1
+	else:
+		anim_state_machine.travel('death')
+		death()
+		if bomb_holding:
+			bomb_holding.global_position = Global.snap_grid(bomb_spawn.global_position)
+			bomb_holding.freeze(false)
+			bomb_holding = null
+		return
 
 func revive():
 	if not alive:

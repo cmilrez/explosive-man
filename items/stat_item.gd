@@ -2,7 +2,7 @@
 class_name StatItem extends Item
 
 @export_enum(' ') var stat: String
-@export var value_change := 1
+@export var value_change = 1
 
 func _validate_property(property):
 	if property.name == 'stat':

@@ -40,7 +40,7 @@ var speed := 256.0:
 var speed_multiplier := 1.0
 var invulnerable := 0.0:
 	set(value):
-		invulnerable = value
+		invulnerable = maxf(value, 0.0)
 		$InvulnerableTimer.start(invulnerable)
 		if invulnerable:
 			$AnimPlayer.play('invulnerable')
@@ -79,4 +79,3 @@ func death():
 		alive = false
 		velocity = Vector2.ZERO
 		# TODO drop items
-		item_list.clear()
