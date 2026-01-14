@@ -31,10 +31,10 @@ func _on_area_entered(area: Area2D):
 	if area is HurtBox:
 		if not area.damage:
 			return
+		toggle_on_off(false)
+		icon.hide()
 		border.offset = Vector2(0, -8)
 		border.play('destroyed')
-		icon.hide()
-		toggle_on_off(false)
 		await border.animation_finished
 		queue_free()
 		return

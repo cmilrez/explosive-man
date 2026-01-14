@@ -12,12 +12,16 @@ var max_fire := 8
 var min_speed := 128.0
 var max_speed := 512.0
 
-var grid_map: NavGrid = null
-
-## Snaps Vector2 to cardinal directions, x=y favors Y axis.
-func snap_vector(vector: Vector2) -> Vector2:
-	if abs(vector.x) > abs(vector.y):
+## Snaps vector to cardinal directions, x=y favors Y axis.
+func snap_card(vector: Vector2) -> Vector2:
+	if absf(vector.x) > absf(vector.y):
 		vector = Vector2(signf(vector.x), 0.0)
 	else:
 		vector = Vector2(0.0, signf(vector.y))
 	return vector
+
+## Snaps vector to a grid of CELL_SIZE.
+func snap_grid(vector: Vector2) -> Vector2:
+	var half_cell = Vector2.ONE * CELL_SIZE / 2.0
+	vector -= half_cell
+	return vector.snappedf(CELL_SIZE) + half_cell

@@ -5,7 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://761b4cph2smy" path="res://misc/collision_circle_r32.tres" id="3_agjtx"]
 [ext_resource type="Animation" uid="uid://bw6fh1yyulci2" path="res://bombs/bomb_normal_anim.res" id="3_kjbcf"]
 [ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="5_glmh0"]
-[ext_resource type="PackedScene" uid="uid://d2qu7ng7rkyhb" path="res://misc/slide_action.tscn" id="6_glmh0"]
+[ext_resource type="Script" uid="uid://dm5j6w23k3mk0" path="res://misc/move.gd" id="6_glmh0"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kjbcf"]
 _data = {
@@ -15,6 +15,7 @@ _data = {
 [node name="BombNormal" type="AnimatableBody2D"]
 collision_layer = 4
 collision_mask = 15
+sync_to_physics = false
 script = ExtResource("1_agjtx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -43,4 +44,9 @@ input_pickable = false
 
 [node name="HitCollision" parent="Hitbox" instance=ExtResource("5_glmh0")]
 
-[node name="SlideAction" parent="." instance=ExtResource("6_glmh0")]
+[node name="Move" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 64)
+collision_mask = 15
+script = ExtResource("6_glmh0")
+metadata/_custom_type_script = "uid://dm5j6w23k3mk0"

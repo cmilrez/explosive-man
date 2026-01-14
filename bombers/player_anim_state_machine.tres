@@ -181,11 +181,11 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wxyrt"]
 advance_mode = 2
-advance_condition = &"walk"
+advance_expression = "velocity"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k2jhm"]
 advance_mode = 2
-advance_condition = &"idle"
+advance_expression = "not velocity"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2cl1w"]
 switch_mode = 2
@@ -193,11 +193,11 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3qsjp"]
 advance_mode = 2
-advance_condition = &"walk"
+advance_expression = "velocity"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mtubu"]
 advance_mode = 2
-advance_condition = &"idle"
+advance_expression = "not velocity"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujku4"]
 switch_mode = 2

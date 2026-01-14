@@ -14,6 +14,7 @@ _data = {
 [node name="BombMine" type="AnimatableBody2D"]
 collision_layer = 4
 collision_mask = 15
+sync_to_physics = false
 script = ExtResource("1_ce67r")
 one_only = true
 
@@ -37,8 +38,8 @@ autoplay = "bomb_mine_anim"
 wait_time = 3.0
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 32
+collision_layer = 0
+collision_mask = 0
 input_pickable = false
 
 [node name="HitCollision" parent="Hitbox" instance=ExtResource("5_7w4fx")]

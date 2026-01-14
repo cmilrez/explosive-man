@@ -1,29 +1,36 @@
 class_name BombSeeker extends Bomb
 
-var target: Node2D
+var target: Node2D:
+	set(value):
+		if not value == bomber_owner:
+			$SeekZone.set_deferred('monitoring', false)
+			target = value
 
-func _physics_process(delta):
-	if not is_instance_valid(target):
-		super._physics_process(delta)
+func _physics_process(_delta):
+	if is_instance_valid(target) and not moving:
+		pursue_target()
+
+func begin_slide(direction: Vector2):
+	if is_instance_valid(target):
+		moving = false # WARNING ?? position may desync with the grid ??
 		return
-	if moving:
-		return
-	var dif := Vector2(target.global_position - global_position).round()
+	super.begin_slide(direction)
+
+func pursue_target():
+	var dif := Vector2(target.global_position - global_position)#.round() ?
 	if dif.length() <= 64.0:
 		return
-	var next_position := Vector2.ZERO
+	var direction := Vector2.ZERO
 	if absf(dif.x) > absf(dif.y):
-		next_position = Vector2(signf(dif.x), 0) * Global.CELL_SIZE
+		direction = Vector2(signf(dif.x), 0)
 	else:
-		next_position = Vector2(0, signf(dif.y)) * Global.CELL_SIZE
-	var move: Tween = $SlideAction.move(self, next_position + global_position, speed)
-	if not move:
+		direction = Vector2(0, signf(dif.y))
+	var tween: Tween = $Move.slide(self, direction, speed)
+	if not tween:
+		moving = false
 		return
 	moving = true
-	move.finished.connect(func(): 
-		moving = false
-		stopped_moving.emit())
+	tween.finished.connect(func(): moving = false)
 
 func _on_seek_zone_body_entered(body):
-	if body != bomber_owner and not is_instance_valid(target):
-		target = body
+	target = body

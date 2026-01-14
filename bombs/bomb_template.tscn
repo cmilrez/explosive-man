@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://crt3dnu8guno1"]
+[gd_scene load_steps=5 format=3 uid="uid://crt3dnu8guno1"]
 
 [ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="2_eqyos"]
 [ext_resource type="Shape2D" uid="uid://761b4cph2smy" path="res://misc/collision_circle_r32.tres" id="3_bpydq"]
+[ext_resource type="Script" uid="uid://dm5j6w23k3mk0" path="res://misc/move.gd" id="3_e31ak"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_eqyos"]
 size = Vector2(16, 16)
@@ -9,6 +10,7 @@ size = Vector2(16, 16)
 [node name="BombTemplate" type="AnimatableBody2D"]
 collision_layer = 4
 collision_mask = 15
+sync_to_physics = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -32,3 +34,5 @@ input_pickable = false
 [node name="Ray" type="RayCast2D" parent="."]
 enabled = false
 collision_mask = 15
+script = ExtResource("3_e31ak")
+metadata/_custom_type_script = "uid://dm5j6w23k3mk0"

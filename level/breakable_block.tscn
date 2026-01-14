@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlp58lhxmmtxt"]
+[gd_scene load_steps=5 format=3 uid="uid://dlp58lhxmmtxt"]
 
 [ext_resource type="SpriteFrames" uid="uid://b15shqfxdsbpx" path="res://level/lv1_brick_anim.tres" id="1_omaxc"]
 [ext_resource type="Script" uid="uid://ulkcjnhmdkvg" path="res://level/breakable_block.gd" id="1_ox62u"]
 [ext_resource type="Shape2D" uid="uid://dhiccjqkcl0av" path="res://misc/collision_rectangle_64x64.tres" id="3_83533"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_c3go4"]
-[ext_resource type="PackedScene" uid="uid://d2qu7ng7rkyhb" path="res://misc/slide_action.tscn" id="4_eim84"]
 
 [node name="BreakableBlock" type="AnimatableBody2D"]
 collision_layer = 8
@@ -24,7 +23,5 @@ collision_mask = 32
 input_pickable = false
 
 [node name="HitCollision" parent="Hitbox" instance=ExtResource("4_c3go4")]
-
-[node name="SlideAction" parent="." instance=ExtResource("4_eim84")]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

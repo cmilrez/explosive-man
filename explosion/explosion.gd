@@ -22,8 +22,8 @@ func _ready():
 		ray.force_raycast_update()
 		if ray.is_colliding():
 			var collision_point: Vector2 = ray.get_collision_point()
-			var steps = to_local(collision_point + Vector2(32, 32) * DIRECTIONS[direction]).length() / Global.CELL_SIZE
-			if steps > 0.5:
+			var steps = roundi(Vector2(to_local(collision_point) * DIRECTIONS[direction]).length()/Global.CELL_SIZE)
+			if steps > 0:
 				for step in steps:
 					var new_segment: Node = EXPLOSION_MIDDLE[direction].instantiate()
 					if step == steps - 1:

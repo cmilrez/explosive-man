@@ -49,13 +49,14 @@ func _physics_process(_delta):
 		move_direction = Vector2.ZERO
 	if move_direction:
 		velocity = move_direction.normalized() * speed * speed_multiplier
-		facing_direction = Global.snap_vector(move_direction)
+		facing_direction = Global.snap_card(move_direction)
 	else:
 		velocity = Vector2.ZERO
 	bombs_active = bomb_bag.get_child_count()
 	if cursed_skull:
 		cursed_skull.new_curse.apply_curse()
 	set_animation_param()
+	
 	if not move_and_slide():
 		return
 	if not velocity:
@@ -68,7 +69,7 @@ func _physics_process(_delta):
 		var dot_prod := dir_to_bomb.dot(facing_direction)
 		if dot_prod < 0.9: # ~50°
 			return
-		last_collider.move_direction = facing_direction
+		last_collider.begin_slide(facing_direction)
 
 func _unhandled_key_input(event):
 	if not alive:
@@ -90,9 +91,6 @@ func _unhandled_key_input(event):
 			first_bomb.detonate()
 
 func set_animation_param():
-	var idle: bool = velocity == Vector2.ZERO
-	anim_tree['parameters/conditions/idle'] = idle
-	anim_tree['parameters/conditions/walk'] = not idle
 	if bomb_holding:
 		anim_tree['parameters/hold_idle/blend_position'] = facing_direction
 		anim_tree['parameters/hold_walk/blend_position'] = facing_direction
@@ -104,7 +102,7 @@ func make_bomb():
 	if hitbox.has_overlapping_bodies():
 		return
 	if bombs_active < bomb_limit:
-		var new_bomb: Node = null
+		var new_bomb: Node2D = null
 		if is_instance_valid(bomb_special):
 			new_bomb = Global.BOMB_NORMAL.instantiate()
 		else:
@@ -116,11 +114,7 @@ func make_bomb():
 			new_bomb.fuse = bomb_fuse
 			new_bomb.fire_power = fire_power
 			add_collision_exception_with(new_bomb)
-		if is_instance_valid(tile_layer):
-			var cell: Vector2i = tile_layer.local_to_map(tile_layer.to_local(bomb_spawn.global_position))
-			new_bomb.global_position = tile_layer.to_global(tile_layer.map_to_local(cell))
-		else:
-			new_bomb.global_position = bomb_spawn.global_position
+		new_bomb.global_position = Global.snap_grid(bomb_spawn.global_position)
 		bomb_bag.add_child(new_bomb)
 
 func set_hp(value: int):

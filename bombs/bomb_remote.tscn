@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cpd7fvrc6wv31" path="res://bombs/bomb_remote.gd" id="1_flvwo"]
 [ext_resource type="Animation" uid="uid://dbpp8asb0we1k" path="res://bombs/bomb_remote_anim.res" id="3_flvwo"]
 [ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="5_1vooq"]
-[ext_resource type="PackedScene" uid="uid://d2qu7ng7rkyhb" path="res://misc/slide_action.tscn" id="6_1vooq"]
+[ext_resource type="Script" uid="uid://dm5j6w23k3mk0" path="res://misc/move.gd" id="6_1vooq"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1vooq"]
 _data = {
@@ -15,6 +15,7 @@ _data = {
 [node name="BombRemote" type="AnimatableBody2D"]
 collision_layer = 4
 collision_mask = 15
+sync_to_physics = false
 script = ExtResource("1_flvwo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -43,4 +44,8 @@ input_pickable = false
 
 [node name="HitCollision" parent="Hitbox" instance=ExtResource("5_1vooq")]
 
-[node name="SlideAction" parent="." instance=ExtResource("6_1vooq")]
+[node name="Move" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 15
+script = ExtResource("6_1vooq")
+metadata/_custom_type_script = "uid://dm5j6w23k3mk0"

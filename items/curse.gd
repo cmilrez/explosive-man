@@ -49,7 +49,7 @@ func apply_curse():
 		Curses.INVERT_CONTROL:
 			target.velocity *= -1
 			if target.move_direction:
-				target.facing_direction = Global.snap_vector(-target.move_direction)
+				target.facing_direction = Global.snap_card(-target.move_direction)
 		Curses.ALWAYS_MOVE:
 			var dir := Vector2.ZERO
 			if Input.is_action_pressed('move_up'):

@@ -11,8 +11,7 @@
 radius = 31.0
 
 [node name="AIBomber" type="CharacterBody2D"]
-z_index = 2
-y_sort_enabled = true
+z_index = 1
 collision_mask = 14
 motion_mode = 1
 script = ExtResource("1_u1naf")
@@ -45,8 +44,7 @@ libraries = {
 &"Bomber": ExtResource("3_nu2bf")
 }
 tree_root = ExtResource("4_kuj56")
-parameters/conditions/idle = false
-parameters/conditions/walk = false
+advance_expression_base_node = NodePath("..")
 parameters/hold_idle/blend_position = Vector2(0, 0)
 parameters/hold_walk/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
