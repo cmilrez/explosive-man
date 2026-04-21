@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvtkxexa6rg"]
+[gd_scene format=3 uid="uid://bvtkxexa6rg"]
 
 [ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="1_2lu40"]
 [ext_resource type="Script" uid="uid://dvkxei4jrcxy" path="res://items/stat_item.gd" id="1_yrln1"]
 [ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="2_yrln1"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_iimes"]
 
-[node name="KickPower" type="Area2D"]
+[node name="KickPower" type="Area2D" unique_id=1625580218]
 collision_layer = 16
 collision_mask = 44
 input_pickable = false
 script = ExtResource("1_yrln1")
 stat = "kick"
 
-[node name="Border" type="AnimatedSprite2D" parent="."]
+[node name="Border" type="AnimatedSprite2D" parent="." unique_id=861632850]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_2lu40")
 autoplay = "default"
 
-[node name="Icon" type="Sprite2D" parent="Border"]
+[node name="Icon" type="Sprite2D" parent="Border" unique_id=985015819]
 texture = ExtResource("2_yrln1")
 hframes = 5
 vframes = 6
 frame = 9
 
-[node name="AreaCollision" parent="." instance=ExtResource("4_iimes")]
+[node name="AreaCollision" parent="." unique_id=521292061 instance=ExtResource("4_iimes")]

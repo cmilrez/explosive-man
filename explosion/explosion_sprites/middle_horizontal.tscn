@@ -1,23 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl5reytit7g7c"]
+[gd_scene format=3 uid="uid://dl5reytit7g7c"]
 
 [ext_resource type="SpriteFrames" uid="uid://drssiehy77nbc" path="res://explosion/explosion_sprites/middle_horizontal.tres" id="1_7muea"]
 [ext_resource type="Script" uid="uid://gcq2a0ln0e0u" path="res://misc/hurt_box.gd" id="1_lwubm"]
 [ext_resource type="Shape2D" uid="uid://b0iswfjorevuf" path="res://misc/collision_rectangle_48x48.tres" id="3_12rxi"]
 
-[node name="ExplosionArea" type="Area2D"]
+[node name="ExplosionArea" type="Area2D" unique_id=1136606917]
 collision_layer = 32
 collision_mask = 0
 input_pickable = false
 monitoring = false
 script = ExtResource("1_lwubm")
 
-[node name="MiddleHorizontal" type="AnimatedSprite2D" parent="."]
+[node name="MiddleHorizontal" type="AnimatedSprite2D" parent="." unique_id=728961672]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_7muea")
 autoplay = "default"
 frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=169881845]
 rotation = 1.5708
 shape = ExtResource("3_12rxi")
 debug_color = Color(1, 0, 0, 0.419608)

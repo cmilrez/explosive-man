@@ -65,7 +65,7 @@ func apply_curse():
 			else:
 				dir.x = 0
 			if dir:
-				last_direction = dir
+				last_direction = dir.normalized()
 			target.velocity = last_direction * target.speed
 		Curses.NO_BOMBS:
 			target.bombs_active = 999

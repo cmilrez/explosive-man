@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dug2r750y2iw2"]
+[gd_scene format=3 uid="uid://dug2r750y2iw2"]
 
 [ext_resource type="Script" uid="uid://b3m6c71gka4cu" path="res://bombers/player.gd" id="1_k2jhm"]
 [ext_resource type="Texture2D" uid="uid://b11xvt8hocp2q" path="res://copyright_shit/bomber.png" id="1_vb64h"]
@@ -161,13 +161,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7qar"]
 radius = 31.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=471840494]
 z_index = 1
 collision_mask = 14
 motion_mode = 1
 script = ExtResource("1_k2jhm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1420961394]
 position = Vector2(0, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("1_vb64h")
@@ -176,17 +176,13 @@ vframes = 10
 frame = 165
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_2eewh")
-}
+[node name="AnimPlayer" type="AnimationPlayer" parent="." unique_id=363051993]
+libraries/ = SubResource("AnimationLibrary_2eewh")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1097007629]
 active = false
-libraries = {
-&"": SubResource("AnimationLibrary_2cl1w"),
-&"Bomber": ExtResource("2_f7qar")
-}
+libraries/ = SubResource("AnimationLibrary_2cl1w")
+libraries/Bomber = ExtResource("2_f7qar")
 tree_root = ExtResource("5_2cl1w")
 advance_expression_base_node = NodePath("..")
 parameters/hold_idle/blend_position = Vector2(0, 0)
@@ -199,22 +195,22 @@ parameters/throw/blend_position = Vector2(0, 0)
 parameters/walk/blend/blend_position = Vector2(0, 0)
 parameters/walk/speed/scale = 1.0
 
-[node name="BodyShape" type="CollisionShape2D" parent="."]
+[node name="BodyShape" type="CollisionShape2D" parent="." unique_id=60684718]
 position = Vector2(0, -32)
 shape = SubResource("CircleShape2D_f7qar")
 
-[node name="BombSpawn" type="Marker2D" parent="."]
+[node name="BombSpawn" type="Marker2D" parent="." unique_id=162985997]
 position = Vector2(0, -32)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=970165581]
 position = Vector2(0, -32)
 collision_mask = 52
 input_pickable = false
 
-[node name="HitboxShape" parent="Hitbox" instance=ExtResource("7_3qsjp")]
+[node name="HitboxShape" parent="Hitbox" unique_id=358829888 instance=ExtResource("7_3qsjp")]
 scale = Vector2(0.9, 0.9)
 
-[node name="PunchArea" type="Area2D" parent="."]
+[node name="PunchArea" type="Area2D" parent="." unique_id=1971665842]
 z_index = 1
 position = Vector2(0, -32)
 monitoring = false
@@ -222,15 +218,15 @@ script = ExtResource("2_vnxah")
 damage = 0
 punch = true
 
-[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea"]
+[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea" unique_id=1163554840]
 position = Vector2(-60, 0)
 shape = ExtResource("4_om7si")
 disabled = true
 debug_color = Color(1, 1, 0, 0.419608)
 
-[node name="BombBag" type="Node" parent="."]
+[node name="BombBag" type="Node" parent="." unique_id=82925924]
 
-[node name="InvulnerableTimer" type="Timer" parent="."]
+[node name="InvulnerableTimer" type="Timer" parent="." unique_id=763048078]
 one_shot = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

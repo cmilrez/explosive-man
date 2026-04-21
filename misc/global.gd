@@ -12,7 +12,7 @@ var max_fire := 8
 var min_speed := 128.0
 var max_speed := 512.0
 
-## Snaps vector to cardinal directions, x=y favors Y axis.
+## Returns normalized cardinal vector,  x=y favors Y axis.
 func snap_card(vector: Vector2) -> Vector2:
 	if absf(vector.x) > absf(vector.y):
 		vector = Vector2(signf(vector.x), 0.0)

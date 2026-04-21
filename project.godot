@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Explosiveman"
 run/main_scene="uid://bklkyd4y0vngh"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="uid://bdqgdvioohpnk"
 config/windows_native_icon="res://icon man face.ico"

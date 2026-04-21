@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cssu4y0tyqkpo"]
+[gd_scene format=3 uid="uid://cssu4y0tyqkpo"]
 
 [ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="1_144a8"]
 [ext_resource type="Shape2D" uid="uid://761b4cph2smy" path="res://misc/collision_circle_r32.tres" id="1_cqpmf"]
@@ -12,39 +12,37 @@ _data = {
 &"bomb_remote_anim": ExtResource("3_flvwo")
 }
 
-[node name="BombRemote" type="AnimatableBody2D"]
+[node name="BombRemote" type="AnimatableBody2D" unique_id=2083677202]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 script = ExtResource("1_flvwo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1988035300]
 scale = Vector2(4, 4)
 texture = ExtResource("1_144a8")
 hframes = 4
 vframes = 4
 frame = 12
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=2073713708]
 shape = ExtResource("1_cqpmf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1vooq")
-}
-autoplay = "bomb_remote_anim"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=827474174]
+libraries/ = SubResource("AnimationLibrary_1vooq")
+autoplay = &"bomb_remote_anim"
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=1780680253]
 wait_time = 3.0
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1971358081]
 collision_layer = 4
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_1vooq")]
+[node name="HitCollision" parent="Hitbox" unique_id=1167000294 instance=ExtResource("5_1vooq")]
 
-[node name="Move" type="RayCast2D" parent="."]
+[node name="Move" type="RayCast2D" parent="." unique_id=1260451768]
 enabled = false
 collision_mask = 15
 script = ExtResource("6_1vooq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccmdpfkfc1veh"]
+[gd_scene format=3 uid="uid://ccmdpfkfc1veh"]
 
 [ext_resource type="Script" uid="uid://cpwrnc1qgopjm" path="res://bombs/bomb_spike.gd" id="1_hix74"]
 [ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="1_ybud8"]
@@ -12,39 +12,37 @@ _data = {
 &"bomb_spike": ExtResource("2_a2abm")
 }
 
-[node name="BombSpike" type="AnimatableBody2D"]
+[node name="BombSpike" type="AnimatableBody2D" unique_id=1464096554]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 script = ExtResource("1_hix74")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1899698891]
 scale = Vector2(4, 4)
 texture = ExtResource("1_ybud8")
 hframes = 4
 vframes = 4
 frame = 9
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hix74")
-}
-autoplay = "bomb_spike"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1421443553]
+libraries/ = SubResource("AnimationLibrary_hix74")
+autoplay = &"bomb_spike"
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=940488431]
 shape = ExtResource("4_gd07v")
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=821929025]
 one_shot = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1273998208]
 collision_layer = 4
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_els8e")]
+[node name="HitCollision" parent="Hitbox" unique_id=483925501 instance=ExtResource("5_els8e")]
 
-[node name="Move" type="RayCast2D" parent="."]
+[node name="Move" type="RayCast2D" parent="." unique_id=2060657189]
 enabled = false
 collision_mask = 15
 script = ExtResource("6_els8e")

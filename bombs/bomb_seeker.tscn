@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://olo5lp8gwoph"]
+[gd_scene format=3 uid="uid://olo5lp8gwoph"]
 
 [ext_resource type="Script" uid="uid://bul3cxddq3y33" path="res://bombs/bomb_seeker.gd" id="1_0h6qm"]
 [ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="2_rihyt"]
@@ -12,23 +12,23 @@ _data = {
 &"bomb_seeker": ExtResource("3_0h6qm")
 }
 
-[node name="BombSeeker" type="AnimatableBody2D"]
+[node name="BombSeeker" type="AnimatableBody2D" unique_id=1885838631]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 script = ExtResource("1_0h6qm")
 one_only = true
 
-[node name="SeekZone" type="Area2D" parent="."]
+[node name="SeekZone" type="Area2D" parent="." unique_id=625461129]
 collision_layer = 0
 input_pickable = false
 
-[node name="SeekCollision" type="CollisionShape2D" parent="SeekZone"]
+[node name="SeekCollision" type="CollisionShape2D" parent="SeekZone" unique_id=705684896]
 scale = Vector2(4, 4)
 shape = ExtResource("4_dxrgw")
 debug_color = Color(0.12549, 1, 0.12549, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1991440635]
 position = Vector2(0, -4)
 scale = Vector2(4, 4)
 texture = ExtResource("2_rihyt")
@@ -36,26 +36,24 @@ hframes = 4
 vframes = 4
 frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_hix74")
-}
-autoplay = "bomb_seeker"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=373078975]
+libraries/ = SubResource("AnimationLibrary_hix74")
+autoplay = &"bomb_seeker"
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=598114099]
 shape = ExtResource("4_dxrgw")
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=1493185083]
 one_shot = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=2106155943]
 collision_layer = 4
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_idb1h")]
+[node name="HitCollision" parent="Hitbox" unique_id=459253813 instance=ExtResource("5_idb1h")]
 
-[node name="Move" type="RayCast2D" parent="."]
+[node name="Move" type="RayCast2D" parent="." unique_id=76473982]
 enabled = false
 collision_mask = 15
 script = ExtResource("6_idb1h")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://loscioyjv3fo"]
+[gd_scene format=3 uid="uid://loscioyjv3fo"]
 
 [ext_resource type="Shape2D" uid="uid://bg22merrhfano" path="res://misc/collision_circle_r20.tres" id="1_7qr6c"]
 
-[node name="HitCollision" type="CollisionShape2D"]
+[node name="HitCollision" type="CollisionShape2D" unique_id=588312471]
 shape = ExtResource("1_7qr6c")
 debug_color = Color(1, 1, 0, 0.419608)

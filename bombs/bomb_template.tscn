@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crt3dnu8guno1"]
+[gd_scene format=3 uid="uid://crt3dnu8guno1"]
 
 [ext_resource type="PackedScene" uid="uid://loscioyjv3fo" path="res://misc/hitbox_shape_r20.tscn" id="2_eqyos"]
 [ext_resource type="Shape2D" uid="uid://761b4cph2smy" path="res://misc/collision_circle_r32.tres" id="3_bpydq"]
@@ -7,31 +7,31 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_eqyos"]
 size = Vector2(16, 16)
 
-[node name="BombTemplate" type="AnimatableBody2D"]
+[node name="BombTemplate" type="AnimatableBody2D" unique_id=952037835]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1092612444]
 scale = Vector2(4, 4)
 texture = SubResource("PlaceholderTexture2D_eqyos")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=553092736]
 shape = ExtResource("3_bpydq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=518011681]
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=762921798]
 wait_time = 3.0
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1532739766]
 collision_layer = 4
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("2_eqyos")]
+[node name="HitCollision" parent="Hitbox" unique_id=1304608542 instance=ExtResource("2_eqyos")]
 
-[node name="Ray" type="RayCast2D" parent="."]
+[node name="Ray" type="RayCast2D" parent="." unique_id=1241705575]
 enabled = false
 collision_mask = 15
 script = ExtResource("3_e31ak")

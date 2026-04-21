@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bklkyd4y0vngh"]
+[gd_scene format=4 uid="uid://bklkyd4y0vngh"]
 
 [ext_resource type="PackedScene" uid="uid://dug2r750y2iw2" path="res://bombers/player.tscn" id="1_dsqel"]
 [ext_resource type="PackedScene" uid="uid://b62wjvg0drtey" path="res://interface/pause_menu.tscn" id="1_qj274"]
@@ -32,14 +32,14 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_amuej"]
 
-[node name="TestLevel" type="Node2D"]
+[node name="TestLevel" type="Node2D" unique_id=1206723033]
 
-[node name="PauseMenu" parent="." instance=ExtResource("1_qj274")]
+[node name="PauseMenu" parent="." unique_id=886465851 instance=ExtResource("1_qj274")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=80082461]
 anchor_mode = 0
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=385340569]
 texture_repeat = 2
 position = Vector2(512, 448)
 scale = Vector2(4, 4)
@@ -47,7 +47,7 @@ texture = ExtResource("2_jj66j")
 region_enabled = true
 region_rect = Rect2(-112, -64, 256, 224)
 
-[node name="Chessboard" type="Sprite2D" parent="."]
+[node name="Chessboard" type="Sprite2D" parent="." unique_id=1552489539]
 texture_repeat = 2
 position = Vector2(256, 256)
 scale = Vector2(4, 4)
@@ -55,214 +55,213 @@ texture = ExtResource("1_w72v2")
 region_enabled = true
 region_rect = Rect2(-32, -32, 128, 128)
 
-[node name="Walls" type="StaticBody2D" parent="."]
+[node name="Walls" type="StaticBody2D" parent="." unique_id=371421196]
 collision_layer = 2
 collision_mask = 0
 
-[node name="Top" type="CollisionShape2D" parent="Walls"]
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1792052911]
 position = Vector2(512, 0)
 rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_amuej")
 
-[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=1715142325]
 position = Vector2(512, 896)
 shape = SubResource("WorldBoundaryShape2D_amuej")
 
-[node name="Left" type="CollisionShape2D" parent="Walls"]
+[node name="Left" type="CollisionShape2D" parent="Walls" unique_id=396462652]
 position = Vector2(0, 384)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_amuej")
 
-[node name="Right" type="CollisionShape2D" parent="Walls"]
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=1851786966]
 position = Vector2(1024, 384)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_amuej")
 
-[node name="Items" type="Node2D" parent="."]
+[node name="Items" type="Node2D" parent="." unique_id=723749816]
 metadata/_edit_group_ = true
 
-[node name="CursedSkull" parent="Items" instance=ExtResource("28_8n6n5")]
+[node name="CursedSkull" parent="Items" unique_id=809737696 instance=ExtResource("28_8n6n5")]
 position = Vector2(352, 864)
 
-[node name="SpeedUp" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp" parent="Items" unique_id=984549268 instance=ExtResource("9_sy2wk")]
 position = Vector2(736, 160)
 
-[node name="SpeedUp2" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp2" parent="Items" unique_id=1271332810 instance=ExtResource("9_sy2wk")]
 position = Vector2(544, 160)
 
-[node name="SpeedUp3" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp3" parent="Items" unique_id=1648795425 instance=ExtResource("9_sy2wk")]
 position = Vector2(864, 288)
 
-[node name="SpeedUp4" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp4" parent="Items" unique_id=680085225 instance=ExtResource("9_sy2wk")]
 position = Vector2(224, 672)
 
-[node name="SpeedUp5" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp5" parent="Items" unique_id=1885091863 instance=ExtResource("9_sy2wk")]
 position = Vector2(416, 672)
 
-[node name="SpeedUp6" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp6" parent="Items" unique_id=989865555 instance=ExtResource("9_sy2wk")]
 position = Vector2(288, 96)
 
-[node name="SpeedUp7" parent="Items" instance=ExtResource("9_sy2wk")]
+[node name="SpeedUp7" parent="Items" unique_id=608276169 instance=ExtResource("9_sy2wk")]
 position = Vector2(160, 288)
 
-[node name="FireUp" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp" parent="Items" unique_id=699021704 instance=ExtResource("5_75yj7")]
 position = Vector2(608, 672)
 
-[node name="FireUp3" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp3" parent="Items" unique_id=888529090 instance=ExtResource("5_75yj7")]
 position = Vector2(736, 736)
 
-[node name="FireUp2" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp2" parent="Items" unique_id=149730213 instance=ExtResource("5_75yj7")]
 position = Vector2(864, 608)
 
-[node name="FireUp4" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp4" parent="Items" unique_id=271670040 instance=ExtResource("5_75yj7")]
 position = Vector2(480, 480)
 
-[node name="FireUp5" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp5" parent="Items" unique_id=1004978819 instance=ExtResource("5_75yj7")]
 position = Vector2(288, 288)
 
-[node name="FireUp6" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp6" parent="Items" unique_id=132787101 instance=ExtResource("5_75yj7")]
 position = Vector2(608, 96)
 
-[node name="FireUp7" parent="Items" instance=ExtResource("5_75yj7")]
+[node name="FireUp7" parent="Items" unique_id=1820852093 instance=ExtResource("5_75yj7")]
 position = Vector2(96, 672)
 
-[node name="BombUp" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp" parent="Items" unique_id=1109104955 instance=ExtResource("11_40l65")]
 position = Vector2(416, 288)
 
-[node name="BombUp2" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp2" parent="Items" unique_id=617938901 instance=ExtResource("11_40l65")]
 position = Vector2(416, 160)
 
-[node name="BombUp3" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp3" parent="Items" unique_id=1065712532 instance=ExtResource("11_40l65")]
 position = Vector2(32, 480)
 
-[node name="BombUp4" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp4" parent="Items" unique_id=1584549955 instance=ExtResource("11_40l65")]
 position = Vector2(800, 32)
 
-[node name="BombUp5" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp5" parent="Items" unique_id=183806850 instance=ExtResource("11_40l65")]
 position = Vector2(672, 544)
 
-[node name="BombUp6" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp6" parent="Items" unique_id=1665230090 instance=ExtResource("11_40l65")]
 position = Vector2(288, 736)
 
-[node name="BombUp7" parent="Items" instance=ExtResource("11_40l65")]
+[node name="BombUp7" parent="Items" unique_id=580375789 instance=ExtResource("11_40l65")]
 position = Vector2(160, 480)
 
-[node name="SpikedItem" parent="Items" instance=ExtResource("11_6yu8p")]
+[node name="SpikedItem" parent="Items" unique_id=1359260076 instance=ExtResource("11_6yu8p")]
 position = Vector2(224, 544)
 
-[node name="SeekerItem" parent="Items" instance=ExtResource("8_6yu8p")]
+[node name="SeekerItem" parent="Items" unique_id=860733671 instance=ExtResource("8_6yu8p")]
 position = Vector2(544, 288)
 
-[node name="KickPower" parent="Items" instance=ExtResource("9_hufjl")]
+[node name="KickPower" parent="Items" unique_id=1955120023 instance=ExtResource("9_hufjl")]
 position = Vector2(864, 224)
 
-[node name="PuchPower" parent="Items" instance=ExtResource("10_2h0m4")]
+[node name="PuchPower" parent="Items" unique_id=944640898 instance=ExtResource("10_2h0m4")]
 position = Vector2(544, 352)
 
-[node name="HoldPower" parent="Items" instance=ExtResource("11_qj274")]
+[node name="HoldPower" parent="Items" unique_id=1188285697 instance=ExtResource("11_qj274")]
 position = Vector2(928, 416)
 
-[node name="RemoteBombItem" parent="Items" instance=ExtResource("12_xflnm")]
+[node name="RemoteBombItem" parent="Items" unique_id=322385551 instance=ExtResource("12_xflnm")]
 position = Vector2(288, 160)
 
-[node name="MineBombItem" parent="Items" instance=ExtResource("13_as6sw")]
+[node name="MineBombItem" parent="Items" unique_id=192594699 instance=ExtResource("13_as6sw")]
 position = Vector2(800, 480)
 
-[node name="SpeedDown" parent="Items" instance=ExtResource("14_eu7r1")]
+[node name="SpeedDown" parent="Items" unique_id=839306343 instance=ExtResource("14_eu7r1")]
 position = Vector2(928, 864)
 
-[node name="SpeedDown2" parent="Items" instance=ExtResource("14_eu7r1")]
+[node name="SpeedDown2" parent="Items" unique_id=1836954878 instance=ExtResource("14_eu7r1")]
 position = Vector2(96, 864)
 
-[node name="SpeedDown3" parent="Items" instance=ExtResource("14_eu7r1")]
+[node name="SpeedDown3" parent="Items" unique_id=1269053207 instance=ExtResource("14_eu7r1")]
 position = Vector2(992, 800)
 
-[node name="FireDown" parent="Items" instance=ExtResource("15_cko6f")]
+[node name="FireDown" parent="Items" unique_id=2118395557 instance=ExtResource("15_cko6f")]
 position = Vector2(32, 800)
 
-[node name="FireDown2" parent="Items" instance=ExtResource("15_cko6f")]
+[node name="FireDown2" parent="Items" unique_id=1999373791 instance=ExtResource("15_cko6f")]
 position = Vector2(992, 96)
 
-[node name="FireMax" parent="Items" instance=ExtResource("16_jj66j")]
+[node name="FireMax" parent="Items" unique_id=324593540 instance=ExtResource("16_jj66j")]
 position = Vector2(96, 32)
 
-[node name="BombMax" parent="Items" instance=ExtResource("17_8n6n5")]
+[node name="BombMax" parent="Items" unique_id=2050937584 instance=ExtResource("17_8n6n5")]
 position = Vector2(928, 32)
 
-[node name="BombDown" parent="Items" instance=ExtResource("18_hj18v")]
+[node name="BombDown" parent="Items" unique_id=1465028907 instance=ExtResource("18_hj18v")]
 position = Vector2(992, 224)
 
-[node name="BombDown2" parent="Items" instance=ExtResource("18_hj18v")]
+[node name="BombDown2" parent="Items" unique_id=1907506978 instance=ExtResource("18_hj18v")]
 position = Vector2(32, 160)
 
-[node name="BombDown3" parent="Items" instance=ExtResource("18_hj18v")]
+[node name="BombDown3" parent="Items" unique_id=1806488789 instance=ExtResource("18_hj18v")]
 position = Vector2(992, 608)
 
-[node name="HPUp" parent="Items" instance=ExtResource("19_jxs5t")]
+[node name="HPUp" parent="Items" unique_id=1600656287 instance=ExtResource("19_jxs5t")]
 position = Vector2(608, 864)
 
-[node name="HPUp2" parent="Items" instance=ExtResource("19_jxs5t")]
+[node name="HPUp2" parent="Items" unique_id=2105517941 instance=ExtResource("19_jxs5t")]
 position = Vector2(672, 864)
 
-[node name="LiveUp" parent="Items" instance=ExtResource("20_tsucf")]
+[node name="LiveUp" parent="Items" unique_id=1226947328 instance=ExtResource("20_tsucf")]
 position = Vector2(224, 864)
 
-[node name="Invincible" parent="Items" instance=ExtResource("22_hj18v")]
+[node name="Invincible" parent="Items" unique_id=280761158 instance=ExtResource("22_hj18v")]
 position = Vector2(352, 608)
 
-[node name="SpeedMax" parent="Items" instance=ExtResource("23_jxs5t")]
+[node name="SpeedMax" parent="Items" unique_id=2104316628 instance=ExtResource("23_jxs5t")]
 position = Vector2(416, 32)
 
-[node name="PassWall" parent="Items" instance=ExtResource("24_qihx7")]
+[node name="PassWall" parent="Items" unique_id=1734752764 instance=ExtResource("24_qihx7")]
 position = Vector2(800, 352)
 
-[node name="PassBomb" parent="Items" instance=ExtResource("25_ubm6t")]
+[node name="PassBomb" parent="Items" unique_id=171614229 instance=ExtResource("25_ubm6t")]
 position = Vector2(480, 800)
 
-[node name="HoldPower2" parent="Items" instance=ExtResource("11_qj274")]
+[node name="HoldPower2" parent="Items" unique_id=410823745 instance=ExtResource("11_qj274")]
 position = Vector2(608, 480)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1583389447]
 tile_map_data = PackedByteArray("AAAJAAkAAAAAAAAAAQAKAAkAAAAAAAAAAQALAAkAAAAAAAAAAQAMAAkAAAAAAAAAAQAKAAcAAAAAAAAAAQALAAcAAAAAAAAAAQALAAgAAAAAAAAAAQAKAAoAAAAAAAAAAQAKAAsAAAAAAAAAAQALAAoAAAAAAAAAAQAMAAoAAAAAAAAAAQANAAoAAAAAAAAAAQAOAAoAAAAAAAAAAQAPAAoAAAAAAAAAAQANAAsAAAAAAAAAAQAOAAkAAAAAAAAAAQAOAAgAAAAAAAAAAQAOAAcAAAAAAAAAAQANAAgAAAAAAAAAAQAKAAEAAAAAAAAAAQAMAAEAAAAAAAAAAQAMAAMAAAAAAAAAAQAKAAMAAAAAAAAAAQAAAA0AAAAAAAAAAgAAAAAAAAAAAAAAAgAPAA0AAAAAAAAAAgAPAAAAAAAAAAAAAgACAAoAAAAAAAAAAgAEAAoAAAAAAAAAAgA=")
 tile_set = ExtResource("26_jxs5t")
 
-[node name="AIMarkers" type="Node" parent="."]
+[node name="AIMarkers" type="Node" parent="." unique_id=626560756]
 
-[node name="Marker2D" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D" type="Marker2D" parent="AIMarkers" unique_id=778358648]
 position = Vector2(96, 96)
 
-[node name="Marker2D2" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D2" type="Marker2D" parent="AIMarkers" unique_id=661448136]
 position = Vector2(96, 608)
 
-[node name="Marker2D3" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D3" type="Marker2D" parent="AIMarkers" unique_id=1710429688]
 position = Vector2(352, 608)
 
-[node name="Marker2D4" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D4" type="Marker2D" parent="AIMarkers" unique_id=191104787]
 position = Vector2(352, 96)
 
-[node name="Marker2D5" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D5" type="Marker2D" parent="AIMarkers" unique_id=2138687618]
 position = Vector2(480, 96)
 
-[node name="Marker2D6" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D6" type="Marker2D" parent="AIMarkers" unique_id=802913150]
 position = Vector2(480, 416)
 
-[node name="Marker2D7" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D7" type="Marker2D" parent="AIMarkers" unique_id=937273975]
 position = Vector2(224, 416)
 
-[node name="Marker2D8" type="Marker2D" parent="AIMarkers"]
+[node name="Marker2D8" type="Marker2D" parent="AIMarkers" unique_id=799323698]
 position = Vector2(224, 96)
 
-[node name="SortY" type="Node2D" parent="."]
+[node name="SortY" type="Node2D" parent="." unique_id=561242304]
 y_sort_enabled = true
 
-[node name="Player" parent="SortY" node_paths=PackedStringArray("tile_layer") instance=ExtResource("1_dsqel")]
+[node name="Player" parent="SortY" unique_id=1890362036 instance=ExtResource("1_dsqel")]
 position = Vector2(672, 384)
-tile_layer = NodePath("../../TileMapLayer")
 
-[node name="AIBomber" parent="SortY" node_paths=PackedStringArray("pos_targets") instance=ExtResource("7_v7kku")]
+[node name="AIBomber" parent="SortY" unique_id=226792104 node_paths=PackedStringArray("pos_targets") instance=ExtResource("7_v7kku")]
 position = Vector2(96, 384)
 pos_targets = [NodePath("../../AIMarkers/Marker2D"), NodePath("../../AIMarkers/Marker2D2"), NodePath("../../AIMarkers/Marker2D3"), NodePath("../../AIMarkers/Marker2D4"), NodePath("../../AIMarkers/Marker2D5"), NodePath("../../AIMarkers/Marker2D6"), NodePath("../../AIMarkers/Marker2D7"), NodePath("../../AIMarkers/Marker2D8")]
 
-[node name="BombMine" parent="SortY" instance=ExtResource("18_r7ek7")]
+[node name="BombMine" parent="SortY" unique_id=1846992801 instance=ExtResource("18_r7ek7")]
 position = Vector2(736, 416)
 fire_power = 2

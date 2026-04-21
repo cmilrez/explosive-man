@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcpp6ussrpb5u"]
+[gd_scene format=3 uid="uid://bcpp6ussrpb5u"]
 
 [ext_resource type="Script" uid="uid://dywngv5d1tkke" path="res://bombs/bomb_mine.gd" id="1_ce67r"]
 [ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="1_m6ewu"]
@@ -11,36 +11,34 @@ _data = {
 &"bomb_mine_anim": ExtResource("4_7w4fx")
 }
 
-[node name="BombMine" type="AnimatableBody2D"]
+[node name="BombMine" type="AnimatableBody2D" unique_id=1830416680]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 script = ExtResource("1_ce67r")
 one_only = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2071118235]
 scale = Vector2(4, 4)
 texture = ExtResource("1_m6ewu")
 hframes = 4
 vframes = 4
 frame = 3
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1673180594]
 shape = ExtResource("1_y4efg")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mnjt3")
-}
-autoplay = "bomb_mine_anim"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1511889320]
+libraries/ = SubResource("AnimationLibrary_mnjt3")
+autoplay = &"bomb_mine_anim"
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=718248999]
 wait_time = 3.0
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=198705552]
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_7w4fx")]
+[node name="HitCollision" parent="Hitbox" unique_id=922358462 instance=ExtResource("5_7w4fx")]
 disabled = true

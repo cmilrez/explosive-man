@@ -1,27 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlp58lhxmmtxt"]
+[gd_scene format=3 uid="uid://dlp58lhxmmtxt"]
 
 [ext_resource type="SpriteFrames" uid="uid://b15shqfxdsbpx" path="res://level/lv1_brick_anim.tres" id="1_omaxc"]
 [ext_resource type="Script" uid="uid://ulkcjnhmdkvg" path="res://level/breakable_block.gd" id="1_ox62u"]
 [ext_resource type="Shape2D" uid="uid://dhiccjqkcl0av" path="res://misc/collision_rectangle_64x64.tres" id="3_83533"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_c3go4"]
 
-[node name="BreakableBlock" type="AnimatableBody2D"]
+[node name="BreakableBlock" type="AnimatableBody2D" unique_id=111338616]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_ox62u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=876595909]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_omaxc")
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=1987484498]
 shape = ExtResource("3_83533")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=340008915]
 collision_layer = 0
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("4_c3go4")]
+[node name="HitCollision" parent="Hitbox" unique_id=594371525 instance=ExtResource("4_c3go4")]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

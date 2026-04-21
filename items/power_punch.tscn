@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dixqrtcwek6eq"]
+[gd_scene format=3 uid="uid://dixqrtcwek6eq"]
 
 [ext_resource type="Script" uid="uid://dvkxei4jrcxy" path="res://items/stat_item.gd" id="1_qr7ep"]
 [ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="2_x0r24"]
 [ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="3_4np0t"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_qr7ep"]
 
-[node name="PuchPower" type="Area2D"]
+[node name="PuchPower" type="Area2D" unique_id=892718773]
 collision_layer = 16
 collision_mask = 44
 input_pickable = false
 script = ExtResource("1_qr7ep")
 stat = "punch"
 
-[node name="Border" type="AnimatedSprite2D" parent="."]
+[node name="Border" type="AnimatedSprite2D" parent="." unique_id=423671213]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("2_x0r24")
 autoplay = "default"
 
-[node name="Icon" type="Sprite2D" parent="Border"]
+[node name="Icon" type="Sprite2D" parent="Border" unique_id=901802071]
 texture = ExtResource("3_4np0t")
 hframes = 5
 vframes = 6
 frame = 11
 
-[node name="AreaCollision" parent="." instance=ExtResource("4_qr7ep")]
+[node name="AreaCollision" parent="." unique_id=193216016 instance=ExtResource("4_qr7ep")]

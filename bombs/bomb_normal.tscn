@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://w2b0iss1muxc"]
+[gd_scene format=3 uid="uid://w2b0iss1muxc"]
 
 [ext_resource type="Script" uid="uid://bcf5pijgu73ab" path="res://bombs/bomb.gd" id="1_agjtx"]
 [ext_resource type="Texture2D" uid="uid://b2x8pc822va2d" path="res://copyright_shit/bombs.png" id="2_kjbcf"]
@@ -12,39 +12,37 @@ _data = {
 &"bomb_normal": ExtResource("3_kjbcf")
 }
 
-[node name="BombNormal" type="AnimatableBody2D"]
+[node name="BombNormal" type="AnimatableBody2D" unique_id=2129753589]
 collision_layer = 4
 collision_mask = 15
 sync_to_physics = false
 script = ExtResource("1_agjtx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=363174026]
 scale = Vector2(4, 4)
 texture = ExtResource("2_kjbcf")
 hframes = 4
 vframes = 4
 
-[node name="BodyCollision" type="CollisionShape2D" parent="."]
+[node name="BodyCollision" type="CollisionShape2D" parent="." unique_id=670356137]
 shape = ExtResource("3_agjtx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kjbcf")
-}
-autoplay = "bomb_normal"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1535726180]
+libraries/ = SubResource("AnimationLibrary_kjbcf")
+autoplay = &"bomb_normal"
 
-[node name="FuseTimer" type="Timer" parent="."]
+[node name="FuseTimer" type="Timer" parent="." unique_id=2021895236]
 wait_time = 3.0
 one_shot = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=186397301]
 collision_layer = 4
 collision_mask = 32
 input_pickable = false
 
-[node name="HitCollision" parent="Hitbox" instance=ExtResource("5_glmh0")]
+[node name="HitCollision" parent="Hitbox" unique_id=620345553 instance=ExtResource("5_glmh0")]
 
-[node name="Move" type="RayCast2D" parent="."]
+[node name="Move" type="RayCast2D" parent="." unique_id=58625621]
 enabled = false
 target_position = Vector2(0, 64)
 collision_mask = 15

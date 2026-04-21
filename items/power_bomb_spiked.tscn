@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://blbbnyoef7t51"]
+[gd_scene format=3 uid="uid://blbbnyoef7t51"]
 
 [ext_resource type="Script" uid="uid://cqv00uqcxv6fh" path="res://items/bomb_item.gd" id="1_0yk78"]
 [ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="1_givdk"]
 [ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="2_0yk78"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="4_xsv6o"]
 
-[node name="SpikedBombItem" type="Area2D"]
+[node name="SpikedBombItem" type="Area2D" unique_id=1129582684]
 collision_layer = 16
 collision_mask = 44
 input_pickable = false
 script = ExtResource("1_0yk78")
 scene_path = "uid://ccmdpfkfc1veh"
 
-[node name="Border" type="AnimatedSprite2D" parent="."]
+[node name="Border" type="AnimatedSprite2D" parent="." unique_id=1983112993]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_givdk")
 autoplay = "default"
 
-[node name="Icon" type="Sprite2D" parent="Border"]
+[node name="Icon" type="Sprite2D" parent="Border" unique_id=1074422510]
 texture = ExtResource("2_0yk78")
 hframes = 5
 vframes = 6
 frame = 2
 
-[node name="AreaCollision" parent="." instance=ExtResource("4_xsv6o")]
+[node name="AreaCollision" parent="." unique_id=1757344601 instance=ExtResource("4_xsv6o")]

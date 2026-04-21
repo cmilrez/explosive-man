@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://deeakeiyux2rf"]
+[gd_scene format=3 uid="uid://deeakeiyux2rf"]
 
 [ext_resource type="SpriteFrames" uid="uid://vx88i1y5dit8" path="res://items/item_border_anim.tres" id="1_7vghl"]
 [ext_resource type="Script" uid="uid://dvkxei4jrcxy" path="res://items/stat_item.gd" id="1_dunxl"]
 [ext_resource type="Texture2D" uid="uid://byxw75oo0u675" path="res://copyright_shit/items.png" id="2_dunxl"]
 [ext_resource type="PackedScene" uid="uid://4fq2pmw5wugd" path="res://misc/hitbox_shape_rec48x48.tscn" id="3_datv1"]
 
-[node name="HPUp" type="Area2D"]
+[node name="HPUp" type="Area2D" unique_id=2140798417]
 collision_layer = 16
 collision_mask = 44
 input_pickable = false
 script = ExtResource("1_dunxl")
 stat = "hp"
 
-[node name="Border" type="AnimatedSprite2D" parent="."]
+[node name="Border" type="AnimatedSprite2D" parent="." unique_id=2066278800]
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("1_7vghl")
 autoplay = "default"
 
-[node name="Icon" type="Sprite2D" parent="Border"]
+[node name="Icon" type="Sprite2D" parent="Border" unique_id=1452219581]
 texture = ExtResource("2_dunxl")
 hframes = 5
 vframes = 6
 frame = 14
 
-[node name="AreaCollision" parent="." instance=ExtResource("3_datv1")]
+[node name="AreaCollision" parent="." unique_id=974824796 instance=ExtResource("3_datv1")]

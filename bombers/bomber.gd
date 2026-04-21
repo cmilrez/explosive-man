@@ -1,6 +1,6 @@
 class_name Bomber extends CharacterBody2D
 
-const STATS_LIST: StringName = 'hp,lives,bomb_fuse,bomb_limit,fire_power,speed,invulnerable,kick,hold,punch'
+const STATS_LIST: StringName = &'hp,lives,bomb_fuse,bomb_limit,fire_power,speed,invulnerable,kick,hold,punch'
 
 @export var bomb_scene: PackedScene = null:
 	set(value):

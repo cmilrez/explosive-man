@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk3r70fd67c6d"]
+[gd_scene format=3 uid="uid://dk3r70fd67c6d"]
 
 [ext_resource type="Script" uid="uid://dyl561wp4q4i5" path="res://bombers/ai_bomber.gd" id="1_u1naf"]
 [ext_resource type="Shape2D" uid="uid://bg22merrhfano" path="res://misc/collision_circle_r20.tres" id="2_rax2v"]
@@ -10,26 +10,26 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rax2v"]
 radius = 31.0
 
-[node name="AIBomber" type="CharacterBody2D"]
+[node name="AIBomber" type="CharacterBody2D" unique_id=1891277285]
 z_index = 1
 collision_mask = 14
 motion_mode = 1
 script = ExtResource("1_u1naf")
 
-[node name="PunchArea" type="Area2D" parent="."]
+[node name="PunchArea" type="Area2D" parent="." unique_id=359293869]
 position = Vector2(0, -32)
 collision_layer = 0
 collision_mask = 0
 input_pickable = false
 monitorable = false
 
-[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea"]
+[node name="PunchCollision" type="CollisionShape2D" parent="PunchArea" unique_id=145000786]
 position = Vector2(-60, 0)
 shape = ExtResource("2_rax2v")
 disabled = true
 debug_color = Color(1, 1, 0, 0.419608)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=303819195]
 position = Vector2(0, -64)
 scale = Vector2(4, 4)
 texture = ExtResource("3_rax2v")
@@ -38,38 +38,38 @@ vframes = 10
 frame = 162
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=466348293]
 active = false
-libraries = {
-&"Bomber": ExtResource("3_nu2bf")
-}
+libraries/Bomber = ExtResource("3_nu2bf")
 tree_root = ExtResource("4_kuj56")
 advance_expression_base_node = NodePath("..")
 parameters/hold_idle/blend_position = Vector2(0, 0)
-parameters/hold_walk/blend_position = Vector2(0, 0)
+parameters/hold_walk/blend/blend_position = Vector2(0, 0)
+parameters/hold_walk/time/scale = 1.0
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/pickup/blend_position = Vector2(0, 0)
 parameters/punch/blend_position = Vector2(0, 0)
 parameters/throw/blend_position = Vector2(0, 0)
-parameters/walk/blend_position = Vector2(0, 0)
+parameters/walk/blend/blend_position = Vector2(0, 0)
+parameters/walk/speed/scale = 1.0
 
-[node name="BodyShape" type="CollisionShape2D" parent="."]
+[node name="BodyShape" type="CollisionShape2D" parent="." unique_id=288510320]
 position = Vector2(0, -32)
 shape = SubResource("CircleShape2D_rax2v")
 
-[node name="BombSpawn" type="Marker2D" parent="."]
+[node name="BombSpawn" type="Marker2D" parent="." unique_id=1772193422]
 position = Vector2(0, -32)
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=444441983]
 collision_layer = 0
 collision_mask = 52
 input_pickable = false
 
-[node name="HitboxShape" parent="Hitbox" instance=ExtResource("6_1wnke")]
+[node name="HitboxShape" parent="Hitbox" unique_id=504552038 instance=ExtResource("6_1wnke")]
 position = Vector2(0, -32)
 scale = Vector2(0.9, 0.9)
 
-[node name="BombBag" type="Node" parent="."]
+[node name="BombBag" type="Node" parent="." unique_id=986774276]
 
-[node name="InvulnerableTimer" type="Timer" parent="."]
+[node name="InvulnerableTimer" type="Timer" parent="." unique_id=1966426021]
 one_shot = true

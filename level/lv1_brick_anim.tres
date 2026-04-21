@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://b15shqfxdsbpx"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b15shqfxdsbpx"]
 
 [ext_resource type="Texture2D" uid="uid://dhw8tntufdrwn" path="res://copyright_shit/lv1_brick.png" id="1_e5jl5"]
 

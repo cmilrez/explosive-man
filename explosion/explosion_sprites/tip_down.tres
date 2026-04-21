@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b31e2iujt24ch"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b31e2iujt24ch"]
 
 [ext_resource type="Texture2D" uid="uid://g5qhpgjbut6b" path="res://copyright_shit/explosion.png" id="1_tg8eu"]
 
